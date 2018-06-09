@@ -5,11 +5,10 @@ const initialState = {
   email: '',
   error: undefined,
   isAuthenticated: false,
-  userId: undefined
+  userId: undefined,
 }
 
 export default (state = initialState, action) => {
-  console.log("action", action)
   switch (action.type) {
     case types.CREATE_ACCOUNT: {
       return {
@@ -37,7 +36,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         async: false,
-        error: action.error
+        error: action.error,
       }
     }
     case types.LOGIN_SUCCESS: {

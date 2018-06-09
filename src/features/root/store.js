@@ -13,9 +13,7 @@ export const configureStore = persistedState => {
   const store = createStore(
     rootReducer,
     persistedState,
-    composeEnhancers(
-      applyMiddleware(epicMiddleware)
-    ),
+    composeEnhancers(applyMiddleware(epicMiddleware))
   )
 
   return store

@@ -2,7 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import LS from '../../../utils/localStorage'
-import debounce from 'lodash/debounce'
+// import debounce from 'lodash/debounce'
 
 import { configureStore } from '../store'
 import App from '../components/App'
@@ -23,8 +23,6 @@ const store = configureStore(persistedState)
 //   saveAuthState(store.getState())
 //   debounce(() => saveAuthState(store.getState()), 1000)
 // })
-
-console.log('callled')
 
 const Root = () => (
   <Router>

@@ -1,22 +1,20 @@
-import { combineEpics } from "redux-observable"
-import { Observable } from "rxjs"
-import { mergeMap } from 'rxjs/operators'
-import * as types from "./constants"
+import { combineEpics } from 'redux-observable'
+import { Observable } from 'rxjs'
+import * as types from './constants'
 import { request } from '../../network/request'
 
 // LOGIN
 
 const loginSuccess = data => {
-  api.setToken(data.id)
+  // api.setToken(data.id)
 
   return {
     type: types.LOGIN_SUCCESS,
-    payload: data
+    payload: data,
   }
 }
 
 const loginError = error => Observable.of({ type: types.LOGIN_FAILED, error })
-
 
 export const loginEpic = action$ =>
   action$.ofType(types.LOGIN).mergeMap(action =>
@@ -29,7 +27,7 @@ export const loginEpic = action$ =>
 
 const createSuccess = ({ data }) => ({
   type: types.CREATE_ACCOUNT_SUCCESS,
-  payload: data
+  payload: data,
 })
 
 const createError = error => Observable.of({ type: types.LOGIN_FAILED, error })

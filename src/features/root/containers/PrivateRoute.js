@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+// import React, { Component } from 'react'
+// import { connect } from 'react-redux'
+// import { Redirect } from 'react-router-dom'
 // import * as auth from '../../auth'
 
 // const { getAuthDetails } = auth.selectors
