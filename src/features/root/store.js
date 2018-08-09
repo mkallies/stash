@@ -1,10 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import { createEpicMiddleware } from 'redux-observable'
+import thunk from 'redux-thunk'
 
 import rootReducer from './rootReducer'
-import rootEpic from './rootEpic'
-
-const epicMiddleware = createEpicMiddleware(rootEpic)
 
 export const configureStore = persistedState => {
   const composeEnhancers =
@@ -13,7 +10,7 @@ export const configureStore = persistedState => {
   const store = createStore(
     rootReducer,
     persistedState,
-    composeEnhancers(applyMiddleware(epicMiddleware))
+    composeEnhancers(applyMiddleware(thunk))
   )
 
   return store

@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -18,7 +19,6 @@
     "react/no-did-update-set-state": 1,
     "react/no-typos": 1,
     "react/require-default-props": 1,
-    "react/jsx-max-props-per-line": 1,
     "react/sort-comp": 1,
     "react/sort-prop-types": [
       1,

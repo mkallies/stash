@@ -1,9 +1,7 @@
 import * as types from './constants'
 
 const initialState = {
-  async: false,
   email: '',
-  error: undefined,
   isAuthenticated: false,
   userId: undefined,
 }
@@ -14,14 +12,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         email: action.payload.email,
-        async: true,
       }
     }
     case types.CREATE_ACCOUNT_FAILED:
     case types.CREATE_ACCOUNT_SUCCESS: {
       return {
         ...state,
-        async: false,
       }
     }
 
@@ -29,13 +25,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         email: action.payload.email,
-        async: true,
       }
     }
     case types.LOGIN_FAILED: {
       return {
         ...state,
-        async: false,
         error: action.error,
       }
     }
@@ -45,7 +39,6 @@ export default (state = initialState, action) => {
         isAuthenticated: true,
         authKey: action.payload.id,
         userId: action.payload.userId,
-        async: false,
       }
     }
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-function fokoud({ config, data, params }) {
+function fetcher({ config, data, params }) {
   return axios({
     data,
     method: config.method,
@@ -9,4 +9,4 @@ function fokoud({ config, data, params }) {
   })
 }
 
-export { fokoud }
+export { fetcher }
