@@ -2,18 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 import Navbar from '../components/Navbar'
+import { LINKS } from '../constants'
 
 const propTypes = {
   history: PropTypes.object.isRequired,
 }
-
-const links = [
-  { name: 'Home', path: '/' },
-  { name: 'Discover', path: '/discover' },
-  { name: 'My Stash', path: '/my-stash' },
-  { name: 'Friends', path: '/friends' },
-  { name: 'Search', path: '/search' },
-]
 
 export class NavbarContainer extends Component {
   handleClick = path => {
@@ -22,7 +15,7 @@ export class NavbarContainer extends Component {
   }
 
   render() {
-    return <Navbar handleClick={this.handleClick} links={links} />
+    return <Navbar handleClick={this.handleClick} links={LINKS} />
   }
 }
 
