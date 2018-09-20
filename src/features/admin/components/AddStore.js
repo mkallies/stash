@@ -29,7 +29,12 @@ const inputs = [
   {
     label: 'Product container class to grab relevant products',
     name: 'containerClass',
-    placeholder: '.shop-container or .product-listing',
+    placeholder: '`.shop-container a` or `.product-listing a`',
+  },
+  {
+    label: 'TODO: enter category type + url',
+    name: 'categoryType',
+    placeholder: 'https://boutiquecannabis.ca/cannabis-product/buds/indica',
   },
 ]
 

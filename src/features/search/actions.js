@@ -1,28 +1,50 @@
 import { fetcher } from '../../network'
 import { setIsLoading } from '../../common/actions'
-import { experiences } from '../../data/mockData'
-import { addEntity } from '../../entities/actions'
-
-export const fetchExperiences = () => dispatch => {
-  dispatch(setIsLoading('experiences', true))
-
-  // fetch here
-  dispatch(addEntity({ experiences }))
-
-  dispatch(setIsLoading('experiences', false))
-}
+import * as types from './constants'
 
 export const fetchAllProducts = () => async dispatch => {
-  dispatch(setIsLoading('allProducts', true))
+  dispatch(setIsLoading('startProducts', true))
 
   const config = {
     method: 'get',
     path: '/start',
   }
 
-  const { data } = await fetcher({ config })
+  try {
+    const { data } = await fetcher({ config })
 
-  console.log(data)
+    dispatch({
+      type: types.START_PRODUCTS,
+      payload: data.categories,
+    })
+  } catch (error) {
+    console.log('fetchAllProducts error', error)
+  }
 
-  dispatch(setIsLoading('allProducts', false))
+  dispatch(setIsLoading('startProducts', false))
+}
+
+export const searchQuery = query => async dispatch => {
+  dispatch(setIsLoading('searching', true))
+
+  const config = {
+    method: 'get',
+    path: '/search',
+  }
+
+  console.log(query)
+
+  try {
+    const { data } = await fetcher({ config, params: { ...query } })
+
+    console.log('data', data)
+    dispatch({
+      type: types.SEARCH_PRODUCTS,
+      payload: data,
+    })
+  } catch (error) {
+    console.log('searchQuery error', error)
+  }
+
+  dispatch(setIsLoading('searching', false))
 }

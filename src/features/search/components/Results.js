@@ -19,8 +19,8 @@ const Results = ({ items }) => {
     <div>
       {items.map((item, idx) => (
         <div key={idx}>
-          <Header key={idx} title={item.title} />
-          {item.items.map((item, idx) => <Card key={idx}>{item.title}</Card>)}
+          <Header key={idx} title={item.type} />
+          {item.products.map((item, idx) => <Card key={idx}>{item.name}</Card>)}
         </div>
       ))}
     </div>

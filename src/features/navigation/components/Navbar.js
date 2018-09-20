@@ -1,27 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Input } from '../../../components/Input'
+import { Image, Input } from 'semantic-ui-react'
 import { Button } from '../../../components/Button'
+import Logo from '../../../images/mj64.png'
+import styles from '../navbar.css'
 
 const propTypes = {
   handleClick: PropTypes.func.isRequired,
   links: PropTypes.array.isRequired,
+  user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
 }
-
-const NavbarContainer = styled.div`
-  align-content: center;
-  display: flex;
-  justify-content: space-between;
-  background: white;
-  border-bottom: 1px solid rgb(228, 228, 228);
-  height: 90px;
-`
-
-const VerticalCenter = styled.div`
-  display: flex;
-  align-items: center;
-`
 
 const LinkGroup = styled.ul`
   display: flex;
@@ -46,21 +35,17 @@ const WithHoverBottom = styled.div`
   }
 `
 
-const InputContainer = styled.div`
-  height: 40px;
-  width: 460px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`
-
-const Navbar = ({ links, handleClick }) => {
+const Navbar = ({ links, handleClick, user }) => {
   return (
-    <NavbarContainer>
-      <VerticalCenter>
-        <div>stash icon here</div>
-        <InputContainer>
-          <Input placeholder={"Try 'I want to fall asleep...'"} />
-        </InputContainer>
-      </VerticalCenter>
+    <div className={styles.navbar}>
+      <div className={styles.leftNav}>
+        <Image src={Logo} />
+        <Input
+          className={styles.searchBar}
+          icon="search"
+          placeholder={"Try 'I want to fall asleep...'"}
+        />
+      </div>
       <LinkGroup>
         {links.map((link, idx) => (
           <NavLink
@@ -73,7 +58,7 @@ const Navbar = ({ links, handleClick }) => {
           </NavLink>
         ))}
       </LinkGroup>
-    </NavbarContainer>
+    </div>
   )
 }
 

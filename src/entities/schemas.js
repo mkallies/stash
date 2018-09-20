@@ -7,9 +7,15 @@ export const storeSchema = new schema.Entity(
   {},
   { idAttribute: '_id' }
 )
+
 export const storeListSchema = new schema.Array(storeSchema)
 
 // Product
 
-export const productSchema = new schema.Entity('products')
+export const productSchema = new schema.Entity(
+  'products',
+  {},
+  { idAttribute: '_id' }
+)
+
 export const productListSchema = [productSchema]

@@ -5,16 +5,21 @@
       "jsx": true
     }
   },
+  "settings": {
+    "react": {
+      "version": "16.5"
+    }
+  },
   "extends": ["standard", "plugin:react/recommended"],
   "plugins": ["react"],
   "rules": {
+    "react/no-unused-prop-types": 1,
     "space-before-function-paren": 0,
     "comma-dangle": [2, "always-multiline"],
     "react/destructuring-assignment": [2, "always"],
-    "react/no-unused-prop-types": 1,
     "react/default-props-match-prop-types": 1,
     "react/boolean-prop-naming": 1,
-    "react/button-has-type": 1,
+    "react/button-has-type": "warn",
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
     "react/no-typos": 1,

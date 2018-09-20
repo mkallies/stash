@@ -5,9 +5,9 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import Login from '../../auth/containers/Login'
 // import PrivateRoute from '../containers/PrivateRoute'
-import Home from '../../../pages/home'
-import MyStash from '../../../pages/my-stash'
-import Search from '../../../pages/search'
+import Home from '../../../features/home/containers/HomeContainer'
+import MyStash from '../../../features/my-stash'
+import Search from '../../../features/search/containers/SearchContainer'
 import NavbarContainer from '../../../features/navigation/containers/NavbarContainer'
 import Admin from '../../../features/admin/containers/AdminContainer'
 
@@ -22,7 +22,7 @@ const App = () => (
       <Route component={Login} exact path="/login" />
       <Route component={MyStash} exact path="/my-stash" />
       <Route component={Search} exact path="/search" />
-      <Route component={Admin} exact path="/admin" />
+      <Route component={Admin} path="/admin" />
       <Route component={FourOhFour} />
     </Switch>
     <ToastContainer />

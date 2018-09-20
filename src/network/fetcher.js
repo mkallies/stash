@@ -8,6 +8,7 @@ function fetcher({ config, data, params }) {
     method: config.method,
     url: config.path,
     params,
+    withCredentials: true,
   })
 }
 

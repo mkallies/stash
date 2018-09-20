@@ -3,11 +3,18 @@ import * as types from './constants'
 const initialState = {
   email: '',
   isAuthenticated: false,
+  user: undefined,
   userId: undefined,
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case types.FETCH_USER: {
+      return {
+        ...state,
+        user: action.payload || undefined,
+      }
+    }
     case types.CREATE_ACCOUNT: {
       return {
         ...state,
