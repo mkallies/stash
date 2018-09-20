@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom'
 import Root from './features/root/containers/Root'
 import { injectGlobal } from 'styled-components'
 
+if (process.env.NODE_ENV !== 'production') {
+  const { whyDidYouUpdate } = require('why-did-you-update')
+  whyDidYouUpdate(React)
+}
+
 injectGlobal`
   html {
     line-height: 1.15;

@@ -23,6 +23,7 @@
     "rc-slider": "^8.6.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-hot-loader": "^4.3.10",
     "react-modal": "^3.5.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
@@ -64,11 +65,13 @@
     "postcss-preset-env": "^6.0.1",
     "prettier-eslint": "^8.8.1",
     "prop-types": "^15.6.1",
+    "redux-logger": "^3.0.6",
     "style-loader": "^0.22.1",
     "stylelint": "^9.5.0",
     "stylelint-config-standard": "^18.2.0",
     "webpack": "^4.11.1",
     "webpack-cli": "^3.0.3",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "why-did-you-update": "^0.1.1"
   }
 }

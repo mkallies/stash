@@ -23,7 +23,6 @@ module.exports = {
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
@@ -35,6 +34,7 @@ module.exports = {
       template: './src/index.html',
       inject: 'body',
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   module: {
     rules: [

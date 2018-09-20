@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import LS from '../../../utils/localStorage'
+import { hot } from 'react-hot-loader'
 // import debounce from 'lodash/debounce'
 
 import { configureStore } from '../store'
@@ -32,4 +33,4 @@ const Root = () => (
   </Router>
 )
 
-export default Root
+export default hot(module)(Root)

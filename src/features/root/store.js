@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 
 import rootReducer from './rootReducer'
 
@@ -10,7 +11,7 @@ export const configureStore = persistedState => {
   const store = createStore(
     rootReducer,
     persistedState,
-    composeEnhancers(applyMiddleware(thunk))
+    composeEnhancers(applyMiddleware(thunk, logger))
   )
 
   return store
