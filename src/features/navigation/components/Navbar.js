@@ -47,16 +47,22 @@ const Navbar = ({ links, handleClick, user }) => {
         />
       </div>
       <LinkGroup>
-        {links.map((link, idx) => (
-          <NavLink
-            fontSize={18}
-            fontWeight={600}
-            key={idx}
-            onClick={() => handleClick(link.path)}
-          >
-            <WithHoverBottom>{link.name}</WithHoverBottom>
-          </NavLink>
-        ))}
+        {links.map((link, idx) => {
+          if (user && link.name === 'Login') return null
+
+          if (user && !user.isAdmin && link.name === 'Admin') return null
+
+          return (
+            <NavLink
+              fontSize={18}
+              fontWeight={600}
+              key={idx}
+              onClick={() => handleClick(link.path)}
+            >
+              <WithHoverBottom>{link.name}</WithHoverBottom>
+            </NavLink>
+          )
+        })}
       </LinkGroup>
     </div>
   )

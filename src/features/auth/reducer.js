@@ -1,10 +1,7 @@
 import * as types from './constants'
 
 const initialState = {
-  email: '',
-  isAuthenticated: false,
   user: undefined,
-  userId: undefined,
 }
 
 export default (state = initialState, action) => {
@@ -43,9 +40,7 @@ export default (state = initialState, action) => {
     case types.LOGIN_SUCCESS: {
       return {
         ...state,
-        isAuthenticated: true,
-        authKey: action.payload.id,
-        userId: action.payload.userId,
+        user: action.payload,
       }
     }
 

@@ -73,7 +73,7 @@ module.exports = {
               ident: 'postcss',
               plugins: () => [
                 postcssImport({ plugins: [stylelint()] }),
-                postcssPresetEnv(),
+                postcssPresetEnv({ stage: 0 }),
               ],
             },
           },

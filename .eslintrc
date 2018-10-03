@@ -43,7 +43,8 @@
         "logical": "parens-new-line",
         "prop": "parens-new-line"
       }
-    ]
+    ],
+    "no-unused-vars": "warn"
   },
   "globals": {
     "localStorage": true
