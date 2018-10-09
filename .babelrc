@@ -1,5 +1,8 @@
 {
-  "presets": [["env", { "targets": { "node": "current" } }], "react"],
+  "presets": [
+    ["env", { "targets": { "node": "current" }, "modules": false }],
+    "react"
+  ],
   "plugins": [
     "react-hot-loader/babel",
     "transform-object-rest-spread",

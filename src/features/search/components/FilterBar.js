@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Dropdown } from 'semantic-ui-react'
-import { Range } from 'rc-slider'
+import Range from 'rc-slider/lib/Range'
 import 'rc-slider/assets/index.css'
 import { TYPE_OPTIONS, WEIGHT_OPTIONS } from '../constants'
 

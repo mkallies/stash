@@ -50,7 +50,9 @@ const Navbar = ({ links, handleClick, user }) => {
         {links.map((link, idx) => {
           if (user && link.name === 'Login') return null
 
-          if (user && !user.isAdmin && link.name === 'Admin') return null
+          if (link.name === 'Admin' && (!user || (user && !user.isAdmin))) {
+            return null
+          }
 
           return (
             <NavLink

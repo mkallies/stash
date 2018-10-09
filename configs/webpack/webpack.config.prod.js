@@ -1,24 +1,49 @@
 const webpack = require('webpack')
 const postcssPresetEnv = require('postcss-preset-env')
 const postcssImport = require('postcss-import')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const stylelint = require('stylelint')
+const cssNano = require('cssnano')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 module.exports = {
-  devServer: {
-    contentBase: './dist',
-    historyApiFallback: true,
-    hot: true,
-    port: 4200,
+  mode: 'production',
+  devtool: 'source-map',
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
+  output: {
+    filename: '[name].[contenthash].js',
+  },
+  plugins: [
+    new BundleAnalyzerPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+    new webpack.HashedModuleIdsPlugin(),
+  ],
   module: {
     rules: [
       {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          {
-            loader: 'style-loader',
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -35,6 +60,7 @@ module.exports = {
               plugins: () => [
                 postcssImport({ plugins: [stylelint()] }),
                 postcssPresetEnv({ features: { 'nesting-rules': true } }),
+                cssNano(),
               ],
             },
           },
@@ -42,14 +68,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-      },
-      __DEVTOOLS__: true,
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
 }
