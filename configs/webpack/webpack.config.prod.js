@@ -4,8 +4,6 @@ const postcssImport = require('postcss-import')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const stylelint = require('stylelint')
 const cssNano = require('cssnano')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin
 
 module.exports = {
   mode: 'production',
@@ -26,7 +24,6 @@ module.exports = {
     filename: '[name].[contenthash].js',
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
