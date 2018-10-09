@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn install && yarn build",
+    "netlify": "NPM_CONFIG_PRODUCTION=false yarn install && yarn build",
     "build": "rimraf dist && webpack --mode production",
     "clean": "rimraf node_modules && yarn install"
   },
