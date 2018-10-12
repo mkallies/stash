@@ -24,12 +24,11 @@ module.exports = {
     filename: '[name].[contenthash].js',
   },
   plugins: [
+    // need to define any env variables here or it won't work within the app
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        BASE_URL: JSON.stringify(
-          `${process.env.BASE_URL}` || 'http://localhost:4500'
-        ),
+        BASE_URL: JSON.stringify(process.env.BASE_URL),
       },
     }),
     new MiniCssExtractPlugin({

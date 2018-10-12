@@ -10,6 +10,9 @@ function fetcher({ config, data, params }) {
     url: config.path,
     params,
     withCredentials: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   })
 }
 
