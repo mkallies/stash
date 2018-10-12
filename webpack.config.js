@@ -3,12 +3,8 @@ const prodConfig = require('./configs/webpack/webpack.config.prod')
 const baseConfig = require('./configs/webpack/webpack.config.common')
 const merge = require('webpack-merge')
 
-console.log('PROCESSSSSS', process.env)
-
 module.exports = (env, opts) => {
   const { mode } = opts
-
-  console.log('env', env)
 
   if (mode === 'production') {
     return merge(baseConfig, prodConfig)
