@@ -48,6 +48,7 @@ const Navbar = ({ links, handleClick, user }) => {
       </div>
       <LinkGroup>
         {links.map((link, idx) => {
+          console.log('user', user)
           if (user && link.name === 'Login') return null
 
           if (link.name === 'Admin' && (!user || (user && !user.isAdmin))) {

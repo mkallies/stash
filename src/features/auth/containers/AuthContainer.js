@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Login from '../components/Login'
 import CreateAccount from '../components/CreateAccount'
-import { createAccount } from '../actions'
+import { createAccount, login } from '../actions'
 import { isEmail } from '../../../utils/helpers'
 import isEmpty from 'lodash/isEmpty'
 
@@ -22,7 +22,9 @@ const initialState = {
 
 export class AuthContainer extends Component {
   static propTypes = {
+    closeModal: PropTypes.func.isRequired,
     createAccount: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
     type: PropTypes.string.isRequired,
   }
 
@@ -35,14 +37,15 @@ export class AuthContainer extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleLogin = () => {
-    const { createAccount } = this.props
+    const { closeModal, login } = this.props
 
-    createAccount(this.state)
+    login(this.state)
+    closeModal()
   }
 
   handleCreateAccount = () => {
     const inputErrors = this.validateInput(this.state)
-    const { createAccount } = this.props
+    const { createAccount, closeModal } = this.props
 
     this.setState({ inputErrors })
 
@@ -51,6 +54,7 @@ export class AuthContainer extends Component {
     }
 
     createAccount(this.state)
+    closeModal()
   }
 
   handleGoogleAuth = () => {
@@ -109,5 +113,5 @@ export class AuthContainer extends Component {
 
 export default connect(
   null,
-  { createAccount }
+  { createAccount, login }
 )(AuthContainer)

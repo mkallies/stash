@@ -57,7 +57,10 @@ export class NavbarContainer extends Component {
 
         {modalType && (
           <Modal onClose={() => this.toggleModal()} open={Boolean(modalType)}>
-            <AuthContainer type={AUTH_MODAL_TITLE[modalType].type} />
+            <AuthContainer
+              closeModal={this.toggleModal}
+              type={AUTH_MODAL_TITLE[modalType].type}
+            />
           </Modal>
         )}
       </div>

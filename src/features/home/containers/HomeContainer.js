@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchAllProducts } from '../../search/actions'
+import { fetchAllProducts } from '../actions'
 import PropTypes from 'prop-types'
 import { isLoading } from '../../../common/selectors'
-import { getStartData } from '../../search/selectors'
+import { getStartData } from '../selectors'
 import Home from '../components/Home'
 import { fetchUser } from '../../auth/actions'
 
 const mapState = state => ({
-  categories: getStartData(state),
+  products: getStartData(state),
   isLoading: isLoading(state, 'startProducts'),
 })
 
@@ -17,11 +17,11 @@ export class HomeContainer extends Component {
     fetchAllProducts: PropTypes.func.isRequired,
     fetchUser: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
-    categories: PropTypes.array,
+    products: PropTypes.array,
   }
 
   static defaultProps = {
-    categories: [],
+    products: [],
   }
 
   componentDidMount() {
@@ -32,8 +32,8 @@ export class HomeContainer extends Component {
   }
 
   render() {
-    const { categories, isLoading } = this.props
-    return <Home categories={categories} isLoading={isLoading} />
+    const { products, isLoading } = this.props
+    return <Home isLoading={isLoading} products={products} />
   }
 }
 

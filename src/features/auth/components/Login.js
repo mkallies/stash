@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Divider, Form, Icon, Input } from 'semantic-ui-react'
 import styles from '../auth.css'
+import { BASE_URL } from '../../../common/constants'
 
 const propTypes = {
   handleChange: PropTypes.func.isRequired,
@@ -21,7 +22,7 @@ const Login = ({
       <Button
         as="a"
         className={styles.loginButton}
-        href={'http://localhost:5000/auth/google'}
+        href={`${BASE_URL}/auth/google`}
         onClick={handleGoogleAuth}
         size="huge"
         style={{ background: 'white', border: '2px solid rgb(72, 72, 72)' }}
@@ -32,7 +33,7 @@ const Login = ({
         as="a"
         className={styles.loginButton}
         color="facebook"
-        href={'http://localhost:5000/auth/google'}
+        href={`${BASE_URL}/auth/google`}
         onClick={handleGoogleAuth}
         size="huge"
         style={{ margin: '10px 0' }}

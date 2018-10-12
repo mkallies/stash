@@ -1,0 +1,8 @@
+.productContainer {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.productItem {
+  margin: 10px 10px;
+}

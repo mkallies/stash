@@ -1,39 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { NewCard } from '../../../components/Card'
-import { Header } from 'semantic-ui-react'
 import capitalize from 'lodash/capitalize'
+import styles from '../home.css'
 
 const propTypes = {
-  categories: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  products: PropTypes.array.isRequired,
 }
 
-const Home = ({ categories, isLoading }) => {
-  console.log('cat', categories)
+const Home = ({ products, isLoading }) => {
+  console.log('products', products)
   if (isLoading) {
     return <div>LOADING</div>
   }
 
   return (
-    <div>
-      {categories.map(cat => {
+    <div className={styles.productContainer}>
+      {products.map(prod => {
         return (
-          <div key={cat.type}>
-            <Header>{cat.type}</Header>
-            <div>
-              {cat.products.map(product => (
-                <NewCard
-                  content={product.description}
-                  href={product.url}
-                  imgSrc={product.images.thumb_src}
-                  key={product._id}
-                  subtitle={capitalize(product.productType)}
-                  title={product.name}
-                />
-              ))}
-            </div>
-          </div>
+          <NewCard
+            className={styles.productItem}
+            content={prod.product.description}
+            grams={prod.grams}
+            href={prod.url}
+            imgSrc={prod.product.images}
+            key={prod.id}
+            price={prod.price}
+            salePrice={prod.salePrice}
+            subtitle={capitalize(prod.product.productType)}
+            title={prod.product.name}
+          />
         )
       })}
     </div>

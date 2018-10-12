@@ -12,8 +12,6 @@ export const fetchUser = () => async dispatch => {
   try {
     const { data } = await fetcher({ config })
 
-    console.log('data', data)
-
     dispatch({ type: types.FETCH_USER, payload: data })
   } catch (error) {
     console.log('Error fetching user', error)

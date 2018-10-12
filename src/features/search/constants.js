@@ -1,4 +1,3 @@
-export const START_PRODUCTS = 'START_PRODUCTS'
 export const SEARCH_PRODUCTS = 'SEARCH_PRODUCTS'
 
 export const TYPE_OPTIONS = [

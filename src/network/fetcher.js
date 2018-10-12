@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { BASE_URL } from '../common/constants'
 
-axios.defaults.baseURL = process.env.BASE_URL || 'http://localhost:4500'
+axios.defaults.baseURL = BASE_URL
 
 function fetcher({ config, data, params }) {
   return axios({
