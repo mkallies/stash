@@ -10,7 +10,6 @@ const propTypes = {
 }
 
 const Home = ({ products, isLoading }) => {
-  console.log('products', products)
   if (isLoading) {
     return <div>LOADING</div>
   }

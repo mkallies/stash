@@ -11,7 +11,6 @@ const propTypes = {
 const inputs = ['storeName', 'storeUrl']
 
 const Admin = ({ handleInput, handleSubmit, values }) => {
-  console.log(values)
   return (
     <div>
       <h1>Add Store</h1>

@@ -27,6 +27,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
+        BASE_URL: process.env.BASE_URL || 'http://localhost:4500',
       },
     }),
     new MiniCssExtractPlugin({
