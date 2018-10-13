@@ -11,7 +11,7 @@ function fetcher({ config, data, params }) {
     params,
     withCredentials: true,
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'https://stash-backend.herokuapp.com',
     },
   })
 }
