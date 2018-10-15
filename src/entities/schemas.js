@@ -3,9 +3,7 @@ import { schema } from 'normalizr'
 // Store
 
 export const storeSchema = new schema.Entity(
-  'stores',
-  {},
-  { idAttribute: '_id' }
+  'stores'
 )
 
 export const storeListSchema = new schema.Array(storeSchema)
@@ -13,9 +11,7 @@ export const storeListSchema = new schema.Array(storeSchema)
 // Product
 
 export const productSchema = new schema.Entity(
-  'products',
-  {},
-  { idAttribute: '_id' }
+  'products'
 )
 
 export const productListSchema = [productSchema]
