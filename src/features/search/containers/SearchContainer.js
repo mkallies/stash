@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import FilterBar from '../components/FilterBar'
-import { Button } from 'semantic-ui-react'
 import { searchQuery } from '../actions'
+import SearchResultsContainer from './SearchResultsContainer'
 
 export class SearchContainer extends Component {
   static propTypes = {
@@ -30,20 +30,24 @@ export class SearchContainer extends Component {
     searchQuery(this.state)
   }
 
+  handlePriceRange = value => {
+    this.setState({ price: value })
+  }
+
   render() {
     const { strainType, price, weight } = this.state
 
     return (
       <div>
-        <div>
-          <FilterBar
-            handleFilterClick={this.handleFilterClick}
-            price={price}
-            strainType={strainType}
-            weight={weight}
-          />
-        </div>
-        <Button onClick={this.handleSearchClick}>Search</Button>
+        <FilterBar
+          handleFilterClick={this.handleFilterClick}
+          handlePriceRange={this.handlePriceRange}
+          handleSearchClick={this.handleSearchClick}
+          price={price}
+          strainType={strainType}
+          weight={weight}
+        />
+        <SearchResultsContainer />
       </div>
     )
   }

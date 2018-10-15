@@ -1,0 +1,17 @@
+.productContainer {
+  display: flex;
+  flex-flow: wrap;
+  padding: 50px;
+}
+
+.productItem {
+  margin: 10px 10px !important;
+
+  &:first-child {
+    margin: 10px 10px !important;
+  }
+
+  &:last-child {
+    margin: 10px 10px !important;
+  }
+}

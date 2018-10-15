@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Image, Input } from 'semantic-ui-react'
+import { Image, Header } from 'semantic-ui-react'
 import { Button } from '../../../components/Button'
 import Logo from '../../../images/mj64.png'
 import styles from '../navbar.css'
@@ -40,11 +40,7 @@ const Navbar = ({ links, handleClick, user }) => {
     <div className={styles.navbar}>
       <div className={styles.leftNav}>
         <Image src={Logo} />
-        <Input
-          className={styles.searchBar}
-          icon="search"
-          placeholder={"Try 'I want to fall asleep...'"}
-        />
+        <Header content="Stash" />
       </div>
       <LinkGroup>
         {links.map((link, idx) => {

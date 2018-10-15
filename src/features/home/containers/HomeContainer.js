@@ -4,7 +4,7 @@ import { fetchAllProducts } from '../actions'
 import PropTypes from 'prop-types'
 import { isLoading } from '../../../common/selectors'
 import { getStartData } from '../selectors'
-import Home from '../components/Home'
+import { ProductCollection } from '../../../components/ProductCollection'
 import { fetchUser } from '../../auth/actions'
 
 const mapState = state => ({
@@ -33,7 +33,7 @@ export class HomeContainer extends Component {
 
   render() {
     const { products, isLoading } = this.props
-    return <Home isLoading={isLoading} products={products} />
+    return <ProductCollection collection={products} isLoading={isLoading} />
   }
 }
 
