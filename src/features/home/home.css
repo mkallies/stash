@@ -1,0 +1,72 @@
+.filterContainer {
+  display: flex;
+  padding: 15px 108px;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  align-content: center;
+}
+
+.filterOption {
+  display: flex;
+  flex-flow: wrap;
+  margin-right: 50px;
+}
+
+.filterOption label {
+  margin-bottom: 10px;
+}
+
+.rangeContainer {
+  width: 450px;
+  padding: 15px;
+}
+
+.priceDisplay {
+  font-size: 18px;
+  margin: 25px 0;
+}
+
+.priceButtonGroup {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+
+  & span:last-child {
+    color: teal;
+  }
+
+  & span:hover {
+    cursor: pointer;
+  }
+}
+
+.rangeOverride {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.flex {
+  flex: 1;
+}
+
+.strainTypeContainer {
+  width: 450px;
+  padding: 15px;
+}
+
+.strainOption {
+  margin: 0 10px;
+  margin-top: 5px;
+  display: flex;
+  flex-flow: wrap;
+
+  & label {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.strainDescription {
+  margin: 10px 0;
+  font-size: 16px;
+}

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { Image, Header } from 'semantic-ui-react'
 import { Button } from '../../../components/Button'
 import Logo from '../../../images/mj64.png'
@@ -12,56 +11,36 @@ const propTypes = {
   user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
 }
 
-const LinkGroup = styled.ul`
-  display: flex;
-  align-items: center;
-  margin: 0;
-`
-
-const NavLink = styled(Button)`
-  line-height: 90px;
-  display: inline-block;
-  width: 130px;
-`
-
-const WithHoverBottom = styled.div`
-  height: 100%;
-
-  border-bottom: ${({ isActive }) =>
-    isActive && '2px solid rgb(118, 118, 118)'};
-
-  &:hover {
-    border-bottom: 2px solid rgb(118, 118, 118);
-  }
-`
-
-const Navbar = ({ links, handleClick, user }) => {
+function Navbar({ links, handleClick, user }) {
   return (
     <div className={styles.navbar}>
       <div className={styles.leftNav}>
         <Image src={Logo} />
-        <Header content="Stash" />
+        <Header content="Stash." />
       </div>
-      <LinkGroup>
+      <ul className={styles.linkGroup}>
         {links.map((link, idx) => {
           if (user && link.name === 'Login') return null
+
+          if (user && link.name === 'Sign up') return null
+
+          if (!user && link.name === 'My Stash') return null
 
           if (link.name === 'Admin' && (!user || (user && !user.isAdmin))) {
             return null
           }
 
           return (
-            <NavLink
-              fontSize={18}
-              fontWeight={600}
+            <Button
+              className="flex content-center border-transparent border-b-2 hover:border-grey-darkest hover:border-b-2 mx-4 text-xl h-full"
               key={idx}
               onClick={() => handleClick(link.path)}
             >
-              <WithHoverBottom>{link.name}</WithHoverBottom>
-            </NavLink>
+              <div>{link.name}</div>
+            </Button>
           )
         })}
-      </LinkGroup>
+      </ul>
     </div>
   )
 }

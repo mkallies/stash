@@ -9,7 +9,7 @@ import isEmpty from 'lodash/isEmpty'
 
 const authComponent = {
   login: Login,
-  create: CreateAccount,
+  signup: CreateAccount,
 }
 
 const initialState = {
@@ -68,7 +68,7 @@ export class AuthContainer extends Component {
   toggleCreateOrSignUp = () => {
     const { type } = this.state
 
-    const newType = type === 'login' ? 'create' : 'login'
+    const newType = type === 'login' ? 'signup' : 'login'
 
     this.setState({ type: newType })
   }

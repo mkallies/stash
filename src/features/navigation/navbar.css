@@ -13,8 +13,36 @@
   margin: 0 20px;
 }
 
+:global .ui.header:last-child {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 45px;
+}
+
 .searchBar {
   margin-left: 20px;
   width: 300px;
   height: 50px;
+}
+
+.linkGroup {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.navlink {
+  line-height: 90px;
+  display: inline-block;
+  width: 130px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.hoverBottom {
+  height: 100%;
+
+  &:hover {
+    border-bottom: 2px solid rgb(118, 118, 118);
+  }
 }

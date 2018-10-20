@@ -12,16 +12,3 @@ module.exports = (env, opts) => {
 
   return merge(baseConfig, devConfig)
 }
-
-// switch (process.env.NODE_ENV) {
-//   case 'prod':
-//   case 'production':
-//     module.exports = require('./configs/webpack/webpack.config.prod')
-//     break
-//   case 'dev':
-//   case 'development':
-//   case 'test':
-//   case 'testing':
-//   default:
-//     module.exports = require('./configs/webpack/webpack.config.dev')
-// }

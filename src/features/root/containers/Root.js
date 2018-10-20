@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import LS from '../../../utils/localStorage'
 import { hot } from 'react-hot-loader'
+import '../root.global.css'
 // import debounce from 'lodash/debounce'
 
 import { configureStore } from '../store'

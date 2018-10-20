@@ -8,14 +8,14 @@ import { Modal } from 'semantic-ui-react'
 import AuthContainer from '../../auth/containers/AuthContainer'
 import { withRouter } from 'react-router'
 
-const PATHS_FOR_AUTH_MODALS = ['/login', '/create-account']
+const PATHS_FOR_AUTH_MODALS = ['/login', '/sign-up']
 
 const AUTH_MODAL_TITLE = {
   '/login': {
     type: 'login',
   },
-  '/create-account': {
-    type: 'createAccount',
+  '/sign-up': {
+    type: 'signup',
   },
 }
 

@@ -1,32 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import classnames from 'classnames'
 
-const StyledButton = styled.button`
-  cursor: pointer;
-  display: inline-block;
-  min-height: 1em;
-  outline: none;
-  height: 100%;
-  border: none;
-  vertical-align: baseline;
-  background: transparent;
-  margin: 0px;
-  padding: 0px 0.8px;
-  text-transform: none;
-  text-shadow: none;
-  font-style: normal;
-  text-align: center;
-  text-decoration: none;
-  font-size: ${({ fontSize }) => `${fontSize}px` || 14};
-  font-weight: ${({ fontWeight }) => fontWeight || 400};
-  color: rgb(72, 72, 72, 0.9);
-`
+function Button({
+  className,
+  children,
+  content,
+  withBorder,
+  withPadding,
+  ...props
+}) {
+  const classes = classnames(
+    'bg-white text-grey-darkest font-semibold',
+    { 'border border-grey-light': withBorder },
+    { 'py-2 px-4': withPadding },
+    className
+  )
 
-function Button({ type, ...props }) {
+  const contentToRender = children || content
+
   return (
-    <StyledButton type={type}
-      {...props} />
+    <button className={classes} {...props}>
+      {contentToRender}
+    </button>
   )
 }
 

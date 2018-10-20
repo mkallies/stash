@@ -1,0 +1,10 @@
+/* @import "normalize.css"; */
+/* @import "tailwindcss/preflight";
+@import "tailwindcss/utilities"; */
+
+@tailwind preflight;
+@tailwind utilities;
+
+body {
+  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

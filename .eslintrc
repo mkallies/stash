@@ -19,7 +19,6 @@
     "react/destructuring-assignment": [2, "always"],
     "react/default-props-match-prop-types": 1,
     "react/boolean-prop-naming": 1,
-    "react/button-has-type": "warn",
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
     "react/no-typos": 1,

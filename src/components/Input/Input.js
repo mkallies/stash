@@ -1,14 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-
-const StyledInput = styled.input`
-  height: 100%;
-  width: 100%;
-`
+import styles from './input.css'
 
 const Input = ({ type, ...props }) => {
-  return <StyledInput type={type} {...props} />
+  return <input className={styles.input} type={type} {...props} />
 }
 
 Input.defaultProps = {
