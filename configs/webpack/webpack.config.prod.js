@@ -3,7 +3,11 @@ const postcssPresetEnv = require('postcss-preset-env')
 const postcssImport = require('postcss-import')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const stylelint = require('stylelint')
+const tailwindcss = require('tailwindcss')
 const cssNano = require('cssnano')
+const path = require('path')
+
+const ROOT = path.resolve(__dirname, '../../')
 
 module.exports = {
   mode: 'production',
@@ -49,7 +53,21 @@ module.exports = {
               importLoaders: 1,
               sourceMap: true,
               modules: true,
-              localIdentName: '[local]___[hash:base64:5]',
+              getLocalIdent: (
+                loaderContext,
+                localIdentName,
+                localName,
+                options
+              ) => {
+                const fileName = path.basename(loaderContext.resourcePath)
+                if (fileName.indexOf('global.css') !== -1) {
+                  return localName
+                } else {
+                  const name = fileName.replace(/\.[^/.]+$/, '')
+                  return `${name}__${localName}`
+                }
+              },
+              // localIdentName: '[local]___[hash:base64:5]',
             },
           },
           {
@@ -59,6 +77,7 @@ module.exports = {
               plugins: () => [
                 postcssImport({ plugins: [stylelint()] }),
                 postcssPresetEnv({ features: { 'nesting-rules': true } }),
+                tailwindcss(ROOT + '/tailwind.config.js'),
                 cssNano(),
               ],
             },

@@ -7,10 +7,6 @@ const path = require('path')
 
 const ROOT = path.resolve(__dirname, '../../')
 
-const test = tailwindcss(ROOT + '/tailwind.config.js')
-
-console.log('test', test)
-
 module.exports = {
   devServer: {
     contentBase: './dist',
