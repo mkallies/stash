@@ -34,10 +34,6 @@
   & span:last-child {
     color: teal;
   }
-
-  & span:hover {
-    cursor: pointer;
-  }
 }
 
 .rangeOverride {
@@ -69,4 +65,8 @@
 .strainDescription {
   margin: 10px 0;
   font-size: 16px;
+}
+
+.hoverCursor:hover {
+  cursor: pointer;
 }

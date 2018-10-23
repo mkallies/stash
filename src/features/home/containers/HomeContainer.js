@@ -37,6 +37,7 @@ export class HomeContainer extends Component {
     weight: '',
     limit: 30,
     skip: 0,
+    currentPopover: undefined,
   }
 
   componentDidMount() {
@@ -46,8 +47,14 @@ export class HomeContainer extends Component {
     fetchAllProducts()
   }
 
-  handleFilterClick = (type, value) => {
-    this.setState({ [type]: value })
+  handleFilterClick = (type, value, shouldClose) => {
+    const newState = { [type]: value }
+
+    if (shouldClose) {
+      newState.currentPopover = undefined
+    }
+
+    this.setState(newState)
   }
 
   handleSearchClick = () => {
@@ -61,14 +68,25 @@ export class HomeContainer extends Component {
     searchQuery({ ...this.state, strainType: formattedStrainType })
   }
 
+  handlePopoverOpen = (e, { name }) => {
+    this.setState({ currentPopover: name })
+  }
+
+  handlePopoverClose = () => {
+    this.setState({ currentPopover: undefined })
+  }
+
   render() {
     const { products, isLoading } = this.props
-    const { strainType, price, weight } = this.state
+    const { currentPopover, strainType, price, weight } = this.state
 
     return (
       <div>
         <FilterBar
+          currentPopover={currentPopover}
+          handleClose={this.handlePopoverClose}
           handleFilterClick={this.handleFilterClick}
+          handleOpen={this.handlePopoverOpen}
           handleSearchClick={this.handleSearchClick}
           price={price}
           strainType={strainType}

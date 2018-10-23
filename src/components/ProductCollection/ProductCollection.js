@@ -25,8 +25,8 @@ const ProductCollection = ({ collection, emptyCollectionMsg, isLoading }) => {
 
   return (
     <div className="flex flex-wrap justify-between mb-4 px-24 py-20">
-      {collection.map(result => {
-        return <Card key={result.id} product={result} />
+      {collection.map((result, idx) => {
+        return <Card key={idx} product={result} />
       })}
     </div>
   )

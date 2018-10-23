@@ -9,14 +9,24 @@ import StrainFilter from './StrainFilter'
 import { Button } from '../../../components/Button'
 
 const propTypes = {
+  handleClose: PropTypes.func.isRequired,
   handleFilterClick: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
   handleSearchClick: PropTypes.func.isRequired,
   price: PropTypes.array.isRequired,
   strainType: PropTypes.object.isRequired,
+  currentPopover: PropTypes.string,
+}
+
+const defaultProps = {
+  currentPopover: undefined,
 }
 
 const FilterBar = ({
+  currentPopover,
+  handleClose,
   handleFilterClick,
+  handleOpen,
   handleSearchClick,
   price,
   strainType,
@@ -41,7 +51,11 @@ const FilterBar = ({
               setStrainType={handleFilterClick}
             />
           )}
+          name="strainType"
           on="click"
+          onClose={handleClose}
+          onOpen={handleOpen}
+          open={currentPopover === 'strainType'}
           position="bottom center"
           trigger={(
             <Button
@@ -59,7 +73,11 @@ const FilterBar = ({
           content={
             <PriceRange priceRange={price} setPriceRange={handleFilterClick} />
           }
+          name="price"
           on="click"
+          onClose={handleClose}
+          onOpen={handleOpen}
+          open={currentPopover === 'price'}
           position="bottom center"
           trigger={(
             <Button
@@ -83,7 +101,11 @@ const FilterBar = ({
               selection
             />
           )}
+          name="weight"
           on="click"
+          onClose={handleClose}
+          onOpen={handleOpen}
+          open={currentPopover === 'weight'}
           position="bottom center"
           trigger={(
             <Button
@@ -109,5 +131,6 @@ const FilterBar = ({
 }
 
 FilterBar.propTypes = propTypes
+FilterBar.defaultProps = defaultProps
 
 export default FilterBar

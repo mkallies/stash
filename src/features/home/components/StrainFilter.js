@@ -26,20 +26,20 @@ export class StrainFilter extends Component {
   }
 
   handleApply = () => {
-    this.sendStrain(this.state)
+    this.sendStrain(this.state, true)
   }
 
   handleClear = () => {
     this.setState({
       ...INITIAL_STRAIN_STATE,
     })
-    this.sendStrain(INITIAL_STRAIN_STATE)
+    this.sendStrain(INITIAL_STRAIN_STATE, false)
   }
 
-  sendStrain = data => {
+  sendStrain = (data, shouldClose) => {
     const { setStrainType } = this.props
 
-    setStrainType('strainType', data)
+    setStrainType('strainType', data, shouldClose)
   }
 
   render() {
