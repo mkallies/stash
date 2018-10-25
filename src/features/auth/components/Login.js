@@ -1,46 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Divider, Form, Icon, Input } from 'semantic-ui-react'
+import { Button, Divider, Form, Input } from 'semantic-ui-react'
 import styles from '../auth.css'
-import { BASE_URL } from '../../../common/constants'
 
 const propTypes = {
   handleChange: PropTypes.func.isRequired,
-  handleGoogleAuth: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   toggleCreateOrSignUp: PropTypes.func.isRequired,
+  userInput: PropTypes.object.isRequired,
 }
 
 const Login = ({
   handleChange,
   handleLogin,
-  handleGoogleAuth,
   toggleCreateOrSignUp,
+  userInput: { email, password },
 }) => {
+  console.log(email, password)
+  const isDisabled = !email || !password || password.length < 6
+
+  console.log(isDisabled)
   return (
     <Form className={styles.loginContainer}>
-      <Button
-        as="a"
-        className={styles.loginButton}
-        href={`${BASE_URL}/auth/google`}
-        onClick={handleGoogleAuth}
-        size="huge"
-        style={{ background: 'white', border: '2px solid rgb(72, 72, 72)' }}
-      >
-        <Icon name="google" /> Log in with Google
-      </Button>
-      <Button
-        as="a"
-        className={styles.loginButton}
-        color="facebook"
-        href={`${BASE_URL}/auth/google`}
-        onClick={handleGoogleAuth}
-        size="huge"
-        style={{ margin: '10px 0' }}
-      >
-        <Icon name="facebook" /> Log in with Facebook
-      </Button>
-      <Divider horizontal>or</Divider>
       <Form.Field>
         <Input
           icon="user"
@@ -66,6 +47,7 @@ const Login = ({
         className={styles.loginButton}
         color="teal"
         content="Log in"
+        disabled={isDisabled}
         onClick={handleLogin}
         size="huge"
         type="submit"

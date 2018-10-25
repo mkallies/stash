@@ -6,6 +6,7 @@ import CreateAccount from '../components/CreateAccount'
 import { createAccount, login } from '../actions'
 import { isEmail } from '../../../utils/helpers'
 import isEmpty from 'lodash/isEmpty'
+import { getIsAuthenticated } from '../selectors'
 
 const authComponent = {
   login: Login,
@@ -20,10 +21,15 @@ const initialState = {
   lastName: '',
 }
 
+const mapState = state => ({
+  isAuthenticated: getIsAuthenticated(state),
+})
+
 export class AuthContainer extends Component {
   static propTypes = {
     closeModal: PropTypes.func.isRequired,
     createAccount: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
     login: PropTypes.func.isRequired,
     type: PropTypes.string.isRequired,
   }
@@ -34,18 +40,25 @@ export class AuthContainer extends Component {
     this.state = { ...initialState, type: props.type }
   }
 
+  componentDidUpdate(prevProps) {
+    const { closeModal, isAuthenticated } = this.props
+
+    if (!prevProps.isAuthenticated && isAuthenticated) {
+      closeModal()
+    }
+  }
+
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleLogin = () => {
-    const { closeModal, login } = this.props
+    const { login } = this.props
 
     login(this.state)
-    closeModal()
   }
 
   handleCreateAccount = () => {
     const inputErrors = this.validateInput(this.state)
-    const { createAccount, closeModal } = this.props
+    const { createAccount } = this.props
 
     this.setState({ inputErrors })
 
@@ -54,7 +67,6 @@ export class AuthContainer extends Component {
     }
 
     createAccount(this.state)
-    closeModal()
   }
 
   handleGoogleAuth = () => {
@@ -112,6 +124,6 @@ export class AuthContainer extends Component {
 }
 
 export default connect(
-  null,
+  mapState,
   { createAccount, login }
 )(AuthContainer)

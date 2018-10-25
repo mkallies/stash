@@ -16,16 +16,14 @@ const CreateAccount = ({
   errors,
   handleChange,
   handleCreateAccount,
-  userInput,
+  userInput: { email, firstName, lastName, password },
   toggleCreateOrSignUp,
 }) => {
   console.log('errors', errors)
+  const isDisabled =
+    !email || !password || password.length < 6 || !lastName || !firstName
   return (
     <Form className={styles.loginContainer} error={!isEmpty(errors)}>
-      <div className={styles.thirdPartyAuthMessage}>
-        Sign up with Facebook or Google
-      </div>
-      <Divider horizontal>or</Divider>
       <Form.Field error={errors.email}>
         <Input
           icon="mail"
@@ -34,7 +32,7 @@ const CreateAccount = ({
           onChange={handleChange}
           placeholder="Email address"
           size="huge"
-          value={userInput.email}
+          value={email}
         />
         {errors.email && <Message content="Email is required" error />}
       </Form.Field>
@@ -46,7 +44,7 @@ const CreateAccount = ({
           onChange={handleChange}
           placeholder="First name"
           size="huge"
-          value={userInput.firstName}
+          value={firstName}
         />
         {errors.firstName && <Message content="First name is required" error />}
       </Form.Field>
@@ -58,7 +56,7 @@ const CreateAccount = ({
           onChange={handleChange}
           placeholder="Last name"
           size="huge"
-          value={userInput.lastName}
+          value={lastName}
         />
         {errors.lastName && <Message content="Last name is required" error />}
       </Form.Field>
@@ -71,7 +69,7 @@ const CreateAccount = ({
           placeholder="Password"
           size="huge"
           type="password"
-          value={userInput.password}
+          value={password}
         />
         {errors.password && (
           <Message content="Password must be atleast 6 characters" error />
@@ -81,6 +79,7 @@ const CreateAccount = ({
         className={styles.loginButton}
         color="green"
         content="Sign up"
+        disabled={isDisabled}
         onClick={handleCreateAccount}
         size="huge"
         type="submit"
