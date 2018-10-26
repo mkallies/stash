@@ -92,11 +92,15 @@ export class StrainFilter extends Component {
 
         <div className={styles.priceButtonGroup}>
           {showClearBtn ? (
-            <span onClick={this.handleClear}>Clear</span>
+            <span className={styles.hoverCursor} onClick={this.handleClear}>
+              Clear
+            </span>
           ) : (
             <span className={styles.flex} />
           )}
-          <span onClick={this.handleApply}>Apply</span>
+          <span className={styles.hoverCursor} onClick={this.handleApply}>
+            Apply
+          </span>
         </div>
       </div>
     )

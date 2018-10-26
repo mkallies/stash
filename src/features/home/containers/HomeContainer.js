@@ -12,6 +12,7 @@ import {
   INITIAL_STRAIN_STATE,
   INITIAL_PRICE_STATE,
 } from '../constants'
+import { getTruthyProperties } from '../../../utils/helpers'
 
 const mapState = state => ({
   products: getStartData(state),
@@ -34,7 +35,7 @@ export class HomeContainer extends Component {
   state = {
     strainType: INITIAL_STRAIN_STATE,
     price: INITIAL_PRICE_STATE,
-    weight: '',
+    weight: undefined,
     limit: 30,
     skip: 0,
     currentPopover: undefined,
@@ -79,6 +80,7 @@ export class HomeContainer extends Component {
   render() {
     const { products, isLoading } = this.props
     const { currentPopover, strainType, price, weight } = this.state
+    const selectedStrains = getTruthyProperties(strainType)
 
     return (
       <div>
@@ -89,6 +91,7 @@ export class HomeContainer extends Component {
           handleOpen={this.handlePopoverOpen}
           handleSearchClick={this.handleSearchClick}
           price={price}
+          selectedStrains={selectedStrains}
           strainType={strainType}
           weight={weight}
         />

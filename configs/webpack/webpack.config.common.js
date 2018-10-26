@@ -12,7 +12,7 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   devServer: {
     contentBase: './dist',
@@ -44,13 +44,18 @@ module.exports = {
         },
       },
       {
+        test: /\.tsx$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.css$/,
         include: /node_modules/,
         exclude: /src/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',

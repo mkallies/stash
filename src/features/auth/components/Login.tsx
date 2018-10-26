@@ -1,25 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FormEvent, MouseEvent } from 'react'
 import { Button, Divider, Form, Input } from 'semantic-ui-react'
 import styles from '../auth.css'
-
-const propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired,
-  toggleCreateOrSignUp: PropTypes.func.isRequired,
-  userInput: PropTypes.object.isRequired,
-}
 
 const Login = ({
   handleChange,
   handleLogin,
   toggleCreateOrSignUp,
   userInput: { email, password },
+}: {
+handleChange: (e: FormEvent<HTMLInputElement>) => void
+handleLogin: (e: MouseEvent<HTMLElement>) => void
+toggleCreateOrSignUp: (e: MouseEvent<HTMLElement>) => void
+userInput: { email: string; password: string }
 }) => {
-  console.log(email, password)
   const isDisabled = !email || !password || password.length < 6
 
-  console.log(isDisabled)
   return (
     <Form className={styles.loginContainer}>
       <Form.Field>
@@ -60,7 +55,5 @@ const Login = ({
     </Form>
   )
 }
-
-Login.propTypes = propTypes
 
 export default Login

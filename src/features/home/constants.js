@@ -5,7 +5,6 @@ export const SEARCH_PRODUCTS = 'SEARCH_PRODUCTS'
 export const HOME_PRODUCTS = 'HOME_PRODUCTS'
 
 export const WEIGHT_OPTIONS = [
-  { key: '0', text: 'Any', value: 'any' },
   { key: '1', text: '1 g', value: '1' },
   { key: '2', text: '3.5 g', value: '3.5' },
   { key: '3', text: '7 g', value: '7' },
@@ -22,4 +21,4 @@ export const INITIAL_STRAIN_STATE = {
   hybrid: false,
 }
 
-export const INITIAL_PRICE_STATE = [0, 1500]
+export const INITIAL_PRICE_STATE = [0, 500]

@@ -26,10 +26,13 @@ function Card({ className, product }) {
   const showSale = price !== salePrice && salePrice < price
 
   return (
-    <div
-      className={`xl:w-1/5 lg:w-1/3 md:w-2/5 sm:w-4/5 m-2 rounded overflow-hidden shadow-lg border-b-2 border-${
+    <a
+      className={`xl:w-1/5 lg:w-1/3 md:w-2/5 sm:w-4/5 m-2 rounded overflow-hidden text-black hover:text-black shadow-lg border-b-2 border-${
         strainColourMap[product.productType]
       }`}
+      href={product.url}
+      rel="noopener noreferrer"
+      target="_blank"
     >
       <div className="h-64 flex justify-center items-center overflow-hidden">
         <img
@@ -39,12 +42,10 @@ function Card({ className, product }) {
         />
       </div>
       <div className="px-6 py-4">
-        <div className="flex justify-between">
-          <div className="font-bold text-xl mb-5">{product.name}</div>
-          <div className="font-bold text-xl mb-5">
-            {capitalize(product.productType)}
-          </div>
-        </div>
+        <div className="font-bold text-xl mb-5">{product.name}</div>
+        <div className="font-bold text-l text-grey-darkest mb-5">
+          {capitalize(product.productType)}
+        </div>{' '}
         <p className="text-grey-darker text-base">{product.description}</p>
         <div className="font-bold text-l text-grey-darkest">Grams</div>
         <ul className="list-reset flex justify-between items-center w-full pt-2">
@@ -66,7 +67,6 @@ function Card({ className, product }) {
           })}
         </ul>
         <div className="font-bold text-l text-grey-darkest mt-5">Price</div>
-
         <div className="px-6 py-4 flex justify-around items-center my-3">
           <span
             className={`mr-2 text-grey-darker ${
@@ -84,7 +84,7 @@ function Card({ className, product }) {
           )}
         </div>
       </div>
-    </div>
+    </a>
   )
 }
 

@@ -13,8 +13,6 @@ export class PriceRange extends PureComponent {
   constructor(props) {
     super(props)
 
-    console.log('props', props)
-
     this.state = {
       value: props.priceRange,
     }
@@ -47,22 +45,22 @@ export class PriceRange extends PureComponent {
 
   render() {
     const { value } = this.state
-    const [min, max] = value || [0, 5]
+    const [min, max] = value
 
-    const showClearBtn = min !== 0 || max !== 1500
+    const showClearBtn = min !== 0 || max !== 500
 
     return (
       <div className={styles.rangeContainer} onClick={this.handleClick}>
         <Range
           allowCross={false}
           className={styles.rangeOverride}
-          max={1500}
+          max={500}
           onBlur={this.handleBlur}
           onChange={this.handlePriceRange}
           value={value}
         />
         <div className={styles.priceDisplay}>{`$${min} CAD - $${max} CAD${
-          max === 1500 ? '+' : ''
+          max === 500 ? '+' : ''
         }`}</div>
         <div className={styles.priceButtonGroup}>
           {showClearBtn ? (

@@ -7,6 +7,17 @@ import styles from '../home.css'
 import PriceRange from './PriceRange'
 import StrainFilter from './StrainFilter'
 import { Button } from '../../../components/Button'
+import capitalize from 'lodash/capitalize'
+
+const getStrainBtnTitle = strains => {
+  if (!strains.length) {
+    return 'Strain type'
+  } else if (strains.length === 1) {
+    return capitalize(strains[0])
+  } else {
+    return strains.length
+  }
+}
 
 const propTypes = {
   handleClose: PropTypes.func.isRequired,
@@ -14,7 +25,9 @@ const propTypes = {
   handleOpen: PropTypes.func.isRequired,
   handleSearchClick: PropTypes.func.isRequired,
   price: PropTypes.array.isRequired,
+  selectedStrains: PropTypes.array.isRequired,
   strainType: PropTypes.object.isRequired,
+  weight: PropTypes.string.isRequired,
   currentPopover: PropTypes.string,
 }
 
@@ -30,7 +43,15 @@ const FilterBar = ({
   handleSearchClick,
   price,
   strainType,
+  weight,
+  selectedStrains,
 }) => {
+  const [min, max] = price
+
+  const showPrice = min !== 0 || max !== 500
+
+  const strainTitle = getStrainBtnTitle(selectedStrains)
+
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterOption}>
@@ -60,7 +81,8 @@ const FilterBar = ({
           trigger={(
             <Button
               className="hover:bg-grey-lightest rounded shadow"
-              content="Strain type"
+              content={strainTitle}
+              style={{ width: '105px' }}
               withBorder
               withPadding
             />
@@ -82,7 +104,12 @@ const FilterBar = ({
           trigger={(
             <Button
               className="hover:bg-grey-lightest rounded shadow"
-              content="Price"
+              content={
+                showPrice
+                  ? `$${min} - $${max}${max === 500 ? '+' : ''}`
+                  : 'Price'
+              }
+              style={{ width: '113px' }}
               withBorder
               withPadding
             />
@@ -94,11 +121,11 @@ const FilterBar = ({
         <Popup
           content={(
             <Dropdown
-              defaultValue={WEIGHT_OPTIONS[0].value}
               onChange={(e, { value }) => handleFilterClick('weight', value)}
               options={WEIGHT_OPTIONS}
               placeholder="Weight"
               selection
+              value={weight}
             />
           )}
           name="weight"
@@ -110,7 +137,7 @@ const FilterBar = ({
           trigger={(
             <Button
               className="hover:bg-grey-lightest rounded shadow"
-              content="Weight"
+              content={weight ? `${weight} g` : 'Weight'}
               withBorder
               withPadding
             />
