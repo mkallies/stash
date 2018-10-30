@@ -54,7 +54,7 @@ export const login = user => async dispatch => {
 
 export const logout = () => async dispatch => {
   const config = {
-    method: 'post',
+    method: 'get',
     path: '/auth/logout',
   }
 

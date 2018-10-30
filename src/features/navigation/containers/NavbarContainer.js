@@ -7,6 +7,7 @@ import { getUser } from '../../auth/selectors'
 import { Modal } from 'semantic-ui-react'
 import AuthContainer from '../../auth/containers/AuthContainer'
 import { withRouter } from 'react-router'
+import { logout } from '../../auth/actions'
 
 const PATHS_FOR_AUTH_MODALS = ['/login', '/sign-up']
 
@@ -26,6 +27,7 @@ const mapState = state => ({
 export class NavbarContainer extends Component {
   static propTypes = {
     history: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired,
     user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
   }
 
@@ -47,13 +49,24 @@ export class NavbarContainer extends Component {
     this.setState({ modalType })
   }
 
+  handleLogout = () => {
+    const { logout } = this.props
+
+    logout()
+  }
+
   render() {
     const { user } = this.props
     const { modalType } = this.state
 
     return (
       <div>
-        <Navbar handleClick={this.handleClick} links={LINKS} user={user} />
+        <Navbar
+          handleClick={this.handleClick}
+          handleLogout={this.handleLogout}
+          links={LINKS}
+          user={user}
+        />
 
         {modalType && (
           <Modal onClose={() => this.toggleModal()} open={Boolean(modalType)}>
@@ -68,4 +81,7 @@ export class NavbarContainer extends Component {
   }
 }
 
-export default connect(mapState)(withRouter(NavbarContainer))
+export default connect(
+  mapState,
+  { logout }
+)(withRouter(NavbarContainer))

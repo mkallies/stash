@@ -6,11 +6,12 @@ import styles from '../navbar.css'
 
 const propTypes = {
   handleClick: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
   links: PropTypes.array.isRequired,
   user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
 }
 
-function Navbar({ links, handleClick, user }) {
+function Navbar({ links, handleClick, user, handleLogout }) {
   return (
     <div className={styles.navbar}>
       <div className={styles.leftNav}>
@@ -42,7 +43,11 @@ function Navbar({ links, handleClick, user }) {
                 <Dropdown.Menu direction="left">
                   <Dropdown.Item icon="edit" text="Edit Profile" />
                   <Dropdown.Item icon="settings" text="Account Settings" />
-                  <Dropdown.Item icon="log out" text="Log out" />
+                  <Dropdown.Item
+                    icon="log out"
+                    onClick={handleLogout}
+                    text="Log out"
+                  />
                 </Dropdown.Menu>
               </Dropdown>
             )

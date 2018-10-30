@@ -44,6 +44,12 @@ export default (state = initialState, action) => {
       }
     }
 
+    case types.LOGOUT: {
+      return {
+        ...state,
+        user: undefined,
+      }
+    }
     default:
       return state
   }
