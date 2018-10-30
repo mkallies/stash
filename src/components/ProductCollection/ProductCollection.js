@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Card } from '../Card'
+import { NewCard } from '../Card'
 import isEmpty from 'lodash/isEmpty'
 import { Loader } from 'semantic-ui-react'
+import styles from './productCollection.css'
 
 const propTypes = {
   collection: PropTypes.array.isRequired,
@@ -24,9 +25,11 @@ const ProductCollection = ({ collection, emptyCollectionMsg, isLoading }) => {
   }
 
   return (
-    <div className="flex flex-wrap justify-between mb-4 px-24 py-20">
+    <div className={styles.productContainer}>
       {collection.map((result, idx) => {
-        return <Card key={idx} product={result} />
+        return (
+          <NewCard className={styles.productItem} key={idx} product={result} />
+        )
       })}
     </div>
   )

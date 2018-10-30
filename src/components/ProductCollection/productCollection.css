@@ -1,7 +1,9 @@
 .productContainer {
   display: flex;
   flex-flow: wrap;
-  padding: 50px;
+  padding: 2rem 4rem;
+  justify-content: space-between;
+  margin-bottom: 4rem;
 }
 
 .productItem {

@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Dropdown, Input, Popup } from 'semantic-ui-react'
+import { Button, Dropdown, Input, Popup } from 'semantic-ui-react'
 import 'rc-slider/assets/index.css'
 import { WEIGHT_OPTIONS } from '../constants'
 import styles from '../home.css'
 import PriceRange from './PriceRange'
 import StrainFilter from './StrainFilter'
-import { Button } from '../../../components/Button'
 import capitalize from 'lodash/capitalize'
 
 const getStrainBtnTitle = strains => {
@@ -78,15 +77,9 @@ const FilterBar = ({
           onOpen={handleOpen}
           open={currentPopover === 'strainType'}
           position="bottom center"
-          trigger={(
-            <Button
-              className="hover:bg-grey-lightest rounded shadow"
-              content={strainTitle}
-              style={{ width: '105px' }}
-              withBorder
-              withPadding
-            />
-          )}
+          trigger={
+            <Button className={styles.filterButton} content={strainTitle} />
+          }
         />
       </div>
 
@@ -103,15 +96,12 @@ const FilterBar = ({
           position="bottom center"
           trigger={(
             <Button
-              className="hover:bg-grey-lightest rounded shadow"
+              className={styles.filterButton}
               content={
                 showPrice
                   ? `$${min} - $${max}${max === 500 ? '+' : ''}`
                   : 'Price'
               }
-              style={{ width: '113px' }}
-              withBorder
-              withPadding
             />
           )}
         />
@@ -136,20 +126,16 @@ const FilterBar = ({
           position="bottom center"
           trigger={(
             <Button
-              className="hover:bg-grey-lightest rounded shadow"
+              className={styles.filterButton}
               content={weight ? `${weight} g` : 'Weight'}
-              withBorder
-              withPadding
             />
           )}
         />
       </div>
 
       <Button
-        className="bg-green-light text-white hover:text-white hover:bg-green rounded shadow"
+        className={`${styles.filterButton} ${styles.filterSearch}`}
         onClick={handleSearchClick}
-        withBorder
-        withPadding
       >
         Search
       </Button>

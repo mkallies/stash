@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Image, Header } from 'semantic-ui-react'
-import { Button } from '../../../components/Button'
+import { Dropdown, Image, Header, Menu } from 'semantic-ui-react'
 import Logo from '../../../images/mj64.png'
 import styles from '../navbar.css'
 
@@ -18,29 +17,47 @@ function Navbar({ links, handleClick, user }) {
         <Image src={Logo} />
         <Header content="Stash." />
       </div>
-      <ul className={styles.linkGroup}>
+      <Menu secondary stackable>
         {links.map((link, idx) => {
-          if (user && link.name === 'Login') return null
+          if (user && (link.name === 'Login' || link.name === 'Sign up')) {
+            return null
+          }
 
-          if (user && link.name === 'Sign up') return null
-
-          if (!user && link.name === 'My Stash') return null
+          if (
+            !user &&
+            (link.name === 'Admin' ||
+              link.name === 'My Stash' ||
+              link.name === 'Profile')
+          ) {
+            return null
+          }
 
           if (link.name === 'Admin' && (!user || (user && !user.isAdmin))) {
             return null
           }
 
+          if (user && link.name === 'Profile') {
+            return (
+              <Dropdown item text={link.name}>
+                <Dropdown.Menu direction="left">
+                  <Dropdown.Item icon="edit" text="Edit Profile" />
+                  <Dropdown.Item icon="settings" text="Account Settings" />
+                  <Dropdown.Item icon="log out" text="Log out" />
+                </Dropdown.Menu>
+              </Dropdown>
+            )
+          }
+
           return (
-            <Button
+            <Menu.Item
               className="flex content-center border-transparent border-b-2 hover:border-grey-darkest hover:border-b-2 mx-4 text-xl h-full"
               key={idx}
+              name={link.name}
               onClick={() => handleClick(link.path)}
-            >
-              <div>{link.name}</div>
-            </Button>
+            />
           )
         })}
-      </ul>
+      </Menu>
     </div>
   )
 }

@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const postcssPresetEnv = require('postcss-preset-env')
 const postcssImport = require('postcss-import')
 const stylelint = require('stylelint')
-const tailwindcss = require('tailwindcss')
 const path = require('path')
 
 const ROOT = path.resolve(__dirname, '../../')
@@ -53,7 +52,6 @@ module.exports = {
               plugins: () => [
                 postcssImport({ plugins: [stylelint()] }),
                 postcssPresetEnv({ features: { 'nesting-rules': true } }),
-                tailwindcss(ROOT + '/tailwind.config.js'),
               ],
             },
           },
