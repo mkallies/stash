@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NewCard } from '../Card'
 import isEmpty from 'lodash/isEmpty'
-import { Loader } from 'semantic-ui-react'
+import { Loader, Card } from 'semantic-ui-react'
 import styles from './productCollection.css'
 
 const propTypes = {
@@ -25,13 +25,11 @@ const ProductCollection = ({ collection, emptyCollectionMsg, isLoading }) => {
   }
 
   return (
-    <div className={styles.productContainer}>
-      {collection.map((result, idx) => {
-        return (
-          <NewCard className={styles.productItem} key={idx} product={result} />
-        )
-      })}
-    </div>
+    <Card.Group className={styles.productContainer} itemsPerRow={4}>
+      {collection.map((result, idx) => (
+        <NewCard className={styles.productItem} key={idx} product={result} />
+      ))}
+    </Card.Group>
   )
 }
 
