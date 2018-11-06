@@ -1,8 +1,8 @@
 import React from 'react'
-import { Image } from 'semantic-ui-react'
-import capitalize from 'lodash/capitalize'
-import classnames from 'classnames'
+import { Image, Card, Label, CardHeader } from 'semantic-ui-react'
+
 import styles from './card.css'
+import { string } from 'prop-types'
 
 type Product = {
   price: number
@@ -15,6 +15,19 @@ type Product = {
   images: {
     thumb_src: string
   }
+}
+
+interface IStrainMap {
+  sativa: string
+  hybrid: string
+  indica: string
+  [key: string]: string
+}
+
+const strainMap: IStrainMap = {
+  sativa: 'yellow',
+  hybrid: 'purple',
+  indica: 'blue',
 }
 
 const NewCard = ({
@@ -35,22 +48,31 @@ product: Product
     images,
   } = product
 
-  const showSale = price !== salePrice && salePrice < price
-
-  const classes = classnames(styles.card, className)
-
   return (
-    <a className={classes} href={url} target="_blank">
-      <div className={styles.imageContainer}>
-        <Image src={images.thumb_src} />
-      </div>
-
-      <div className={styles.infoContainer}>
-        <div className={styles.productType}>{capitalize(productType)}</div>
-        <div className={styles.name}>{name}</div>
-        <div className={styles.priceMsg}>{`$${price} CAD per ${grams} g`}</div>
-      </div>
-    </a>
+    <Card className={styles.card}>
+      <a href={url} target="_blank">
+        <Image
+          label={{
+            color: strainMap[productType],
+            content: productType,
+            icon: 'tree',
+            ribbon: true,
+          }}
+          src={images.thumb_src}
+        />
+      </a>
+      <Card.Content>
+        <CardHeader>{name}</CardHeader>
+        <Card.Description>
+          <Label color="green" horizontal>
+            {grams}g
+          </Label>
+          <Label color="red" horizontal>
+            ${price}
+          </Label>
+        </Card.Description>
+      </Card.Content>
+    </Card>
   )
 }
 
