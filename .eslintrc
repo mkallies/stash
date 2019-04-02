@@ -10,8 +10,15 @@
       "version": "16.5"
     }
   },
-  "extends": ["standard", "plugin:react/recommended"],
-  "plugins": ["react"],
+  "env": {
+    "jest/globals": true
+  },
+  "extends": [
+    "standard",
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
+  ],
+  "plugins": ["react", "jest"],
   "rules": {
     "react/no-unused-prop-types": 1,
     "space-before-function-paren": 0,

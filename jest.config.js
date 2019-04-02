@@ -8,10 +8,11 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/jest/fileTransformer.js',
   },
-  snapshotSerializers: ['enzyme-to-json/serializer'],
-  testPathIgnorePatterns: ['/node_modules/'],
-  setupFiles: ['<rootDir>/jest/shim.js', '<rootDir>/jest/setupTests.js'],
-  testMatch: ['<rootDir>/src/**/?(*.)(test).{js}'],
+  setupFiles: ['<rootDir>/jest/shim.js'],
+  setupFilesAfterEnv: [
+    'jest-dom/extend-expect',
+    'react-testing-library/cleanup-after-each',
+  ],
   collectCoverageFrom: [
     'src/**/*.{js,jsx}',
     '!src/**/*.test.{js,jsx}',

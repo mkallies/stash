@@ -21,6 +21,8 @@ const strainColourMap = {
 }
 
 function Card({ className, product }) {
+  if (!product) return null
+
   const { price, salePrice } = product
 
   const showSale = price !== salePrice && salePrice < price
