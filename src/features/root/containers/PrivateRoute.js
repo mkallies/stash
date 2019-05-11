@@ -10,6 +10,7 @@ const mapState = state => ({
 
 class PrivateRoute extends Component {
   static propTypes = {
+    component: PropTypes.node.isRequired,
     user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
   }
 

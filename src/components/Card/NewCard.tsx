@@ -1,8 +1,6 @@
 import React from 'react'
 import { Image, Card, Label, CardHeader } from 'semantic-ui-react'
-
 import styles from './card.css'
-import { string } from 'prop-types'
 
 type Product = {
   price: number
@@ -39,11 +37,11 @@ product: Product
 }) => {
   const {
     price,
-    salePrice,
+    // salePrice,
     productType,
     url,
     name,
-    description,
+    // description,
     grams,
     images,
   } = product

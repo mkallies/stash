@@ -7,21 +7,25 @@ import Home from '../../../features/home/containers/HomeContainer'
 import MyStash from '../../../features/my-stash/containers/MyStashContainer'
 import NavbarContainer from '../../../features/navigation/containers/NavbarContainer'
 import Admin from '../../../features/admin/containers/AdminContainer'
+import { ThemeProvider } from 'styled-components'
+import theme from '../../../styles'
 
 import FourOhFour from './404'
 
 const App = () => (
-  <div className="app">
-    <NavbarContainer />
+  <ThemeProvider theme={theme}>
+    <div className="app">
+      <NavbarContainer />
 
-    <Switch>
-      <Route component={Home} exact path="/" />
-      <Route component={MyStash} exact path="/my-stash" />
-      <PrivateRoute component={Admin} path="/admin" />
-      <Route component={FourOhFour} />
-    </Switch>
-    <ToastContainer />
-  </div>
+      <Switch>
+        <Route component={Home} exact path="/" />
+        <Route component={MyStash} exact path="/my-stash" />
+        <PrivateRoute component={Admin} path="/admin" />
+        <Route component={FourOhFour} />
+      </Switch>
+      <ToastContainer />
+    </div>
+  </ThemeProvider>
 )
 
 export default App
