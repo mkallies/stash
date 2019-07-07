@@ -1,6 +1,6 @@
 module.exports = {
   presets: [
-    ['@babel/preset-env', { targets: { ie: '11' } }],
+    ['@babel/preset-env', { targets: { browsers: ['last 2 Chrome version'] } }],
     '@babel/preset-react',
   ],
   plugins: [
