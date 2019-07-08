@@ -23,7 +23,12 @@ const NewCard = ({ product }) => {
 
   return (
     <Card className={styles.card}>
-      <a href={url} rel="noopener noreferrer" target="_blank">
+      <a
+        className={styles.imageContainer}
+        href={url}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         <Image
           label={{
             color: strainMap[productType],
