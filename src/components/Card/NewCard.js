@@ -1,40 +1,15 @@
 import React from 'react'
 import { Image, Card, Label, CardHeader } from 'semantic-ui-react'
 import styles from './card.css'
+import PropTypes from 'prop-types'
 
-type Product = {
-  price: number
-  salePrice: number
-  url: string
-  name: string
-  productType: string
-  description: string
-  grams: number
-  images: {
-    thumb_src: string
-  }
-}
-
-interface IStrainMap {
-  sativa: string
-  hybrid: string
-  indica: string
-  [key: string]: string
-}
-
-const strainMap: IStrainMap = {
+const strainMap = {
   sativa: 'yellow',
   hybrid: 'purple',
   indica: 'blue',
 }
 
-const NewCard = ({
-  className,
-  product,
-}: {
-className?: string
-product: Product
-}) => {
+const NewCard = ({ product }) => {
   const {
     price,
     // salePrice,
@@ -48,7 +23,7 @@ product: Product
 
   return (
     <Card className={styles.card}>
-      <a href={url} target="_blank">
+      <a href={url} rel="noopener noreferrer" target="_blank">
         <Image
           label={{
             color: strainMap[productType],
@@ -72,6 +47,19 @@ product: Product
       </Card.Content>
     </Card>
   )
+}
+
+NewCard.propTypes = {
+  product: PropTypes.shape({
+    price: PropTypes.string,
+    productType: PropTypes.string,
+    grams: PropTypes.string,
+    images: PropTypes.shape({
+      thumb_src: PropTypes.string,
+    }),
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 }
 
 export { NewCard }
