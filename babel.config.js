@@ -12,8 +12,5 @@ module.exports = {
     ],
     '@babel/preset-react',
   ],
-  plugins: [
-    'react-hot-loader/babel',
-    '@babel/plugin-proposal-object-rest-spread',
-  ],
+  plugins: ['@babel/plugin-proposal-object-rest-spread'],
 }

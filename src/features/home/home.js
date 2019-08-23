@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useEffect } from 'preact/compat'
 import { useProductsService } from '../products'
 import { Box, Text, Img } from '../../components/elements'
 

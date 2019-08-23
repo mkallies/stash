@@ -1,4 +1,5 @@
-import React, { useReducer, useMemo } from 'react'
+import React from 'react'
+import { useReducer, useMemo } from 'preact/compat'
 import { fetcher } from '../../network/fetcher'
 
 const ProductContext = React.createContext()

@@ -1,4 +1,4 @@
-import { hot } from 'react-hot-loader/root'
+// import { hot } from 'react-hot-loader/root'
 import React from 'react'
 import { Home } from '../home'
 import { Navbar } from '../navigation'
@@ -19,4 +19,4 @@ const App = () => (
   </ThemeProvider>
 )
 
-export default hot(App)
+export default App
