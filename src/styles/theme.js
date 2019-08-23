@@ -1,53 +1,91 @@
-const createMediaQuery = n => `@media screen and (min-width:${n})`
+const colors = {
+  white: '#fff',
+  black: '#000',
+  text: '#CBD5E0',
+  gray: {
+    100: '#F7FAFC',
+    200: '#EDF2F7',
+    300: '#E2E8F0',
+    400: '#CBD5E0',
+    500: '#A0AEC0',
+    600: '#718096',
+    700: '#4A5568',
+    800: '#2D3748',
+    900: '#1A202C',
+  },
+}
 
-const addAliases = (arr, aliases) =>
-  aliases.forEach((key, i) =>
-    Object.defineProperty(arr, key, {
-      enumerable: false,
-      get() {
-        return this[i]
-      },
-    })
-  )
+const breakpoints = [600, 900, 1200].map(n => `${n}px`)
 
-export const breakpoints = [32, 40, 48, 64].map(n => n + 'em')
-
-export const mediaQueries = breakpoints.map(createMediaQuery)
-
-const aliases = ['sm', 'md', 'lg', 'xl']
-
-addAliases(breakpoints, aliases)
-addAliases(mediaQueries, aliases)
-
-export const space = [0, 4, 8, 16, 32, 64, 128]
-
-export const fontSizes = [1.2, 1.4, 1.6, 2, 2.4, 3.2, 4, 5.6, 7.2].map(
-  n => n + 'rem'
+const space = [0, 4, 8, 16, 24, 32, 40, 48, 64, 80, 96, 112, 128].map(
+  n => `${n / 10}rem`
 )
 
-export const fontWeights = {
-  light: 300,
-  medium: 500,
-  bold: 700,
-}
+const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 72].map(n => `${n / 10}rem`)
 
-export const colors = {}
+const fontWeights = [300, 400, 600, 800]
 
-export const boxShadows = [
-  `0 0 2px 0 rgba(0,0,0,.08),0 1px 4px 0 rgba(0,0,0,.16)`,
-  `0 0 2px 0 rgba(0,0,0,.08),0 2px 8px 0 rgba(0,0,0,.16)`,
-  `0 0 2px 0 rgba(0,0,0,.08),0 4px 16px 0 rgba(0,0,0,.16)`,
-  `0 0 2px 0 rgba(0,0,0,.08),0 8px 32px 0 rgba(0,0,0,.16)`,
+const radii = []
+
+const borders = [
+  `1px solid ${colors.gray['300']}`,
+  `1px solid ${colors.gray['600']}`,
+  `1px solid ${colors.gray['800']}`,
 ]
 
-const theme = {
-  breakpoints,
-  mediaQueries,
-  space,
-  fontSizes,
-  fontWeights,
-  colors,
-  boxShadows,
-}
+// const lineHeights = {
+//   body: 1.7,
+//   tall: 2.4,
+//   title: 2.25,
+// }
 
-export default theme
+// const letterSpacings = {
+//   base: '1px',
+//   wide: '1.3px',
+// }
+
+// const headingStyles = [
+//   {
+//     fontSize: fontSizes[6],
+//     fontWeight: fontWeights[2],
+//     lineHeight: lineHeights.title,
+//   },
+//   {
+//     fontSize: fontSizes[5],
+//     fontWeight: fontWeights[2],
+//     lineHeight: lineHeights.title,
+//   },
+//   {
+//     fontSize: fontSizes[4],
+//     fontWeight: fontWeights[2],
+//     lineHeight: lineHeights.title,
+//   },
+//   {
+//     fontSize: fontSizes[3],
+//     fontWeight: fontWeights[2],
+//     lineHeight: lineHeights.title,
+//   },
+// ]
+
+export const theme = {
+  fontWeights,
+  radii,
+  // lineHeights,
+  // headingStyles,
+  borders,
+  colors,
+  breakpoints,
+  fontSizes,
+  space,
+  textStyles: {
+    caps: {
+      textTransform: 'uppercase',
+    },
+    capitalized: {
+      textTransform: 'capitalize',
+    },
+    italics: {
+      fontStyle: 'italic',
+    },
+  },
+}

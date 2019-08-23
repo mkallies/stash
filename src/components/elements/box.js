@@ -1,48 +1,22 @@
 import styled from 'styled-components'
 import {
-  alignItems,
-  alignSelf,
-  borders,
-  boxShadow,
   color,
-  display,
-  flex,
-  flexDirection,
-  flexWrap,
-  height,
-  justifyContent,
-  maxHeight,
-  maxWidth,
-  opacity,
-  order,
-  overflow,
   position,
   space,
-  width,
-  zIndex,
+  layout,
+  flexbox,
+  border,
+  overflow,
 } from 'styled-system'
 
 export const Box = styled.div`
-  ${alignItems}
-  ${alignSelf}
-  ${borders}
-  ${boxShadow}
-  ${color}
-  ${display}
-  ${flex}
-  ${flexDirection}
-  ${opacity}
-  ${flexWrap}
-  ${height}
-  ${justifyContent}
-  ${maxHeight}
-  ${maxWidth}
-  ${order}
-  ${overflow}
-  ${position}
   ${space}
-  ${width}
-  ${zIndex}
+  ${color}
+  ${layout}
+  ${flexbox}
+  ${border}
+  ${position}
+  ${overflow}
 `
 
 Box.defaultProps = {

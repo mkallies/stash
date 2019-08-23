@@ -1,32 +1,72 @@
 import styled from 'styled-components'
-import {
-  fontWeight,
-  borderColor,
-  borderRadius,
-  buttonStyle,
-  fontSize,
-  letterSpacing,
-  lineHeight,
-} from 'styled-system'
+import { typography } from 'styled-system'
 import { Box } from './box'
 
-export const Button = styled(Box)`
-  appearance: none;
-  display: inline-block;
-  text-align:  center;
-  text-decoration:  none;
-  
-  &:hover {
-    cursor: pointer
+export const buttonStyles = ({ theme, variant = 'primary' }) => {
+  // const { colors, radii } = theme
+
+  switch (variant) {
+    case 'primary': {
+      return `
+        
+
+        &:focus,
+        &:hover {
+
+        }
+      `
+    }
+
+    case 'secondary': {
+      return `
+
+
+        &:hover,
+        &:focus {
+
+        }
+      `
+    }
+
+    case 'minimal': {
+      return `
+
+
+        &:focus,
+        &:hover {
+
+        }
+      `
+    }
+
+    case 'navbar': {
+      return `
+        background: none;
+        color: ${theme.colors.greys[0]};
+        font-weight: 600;
+        border: none;
+        padding: 0;
+
+
+        &:Focus,
+        &:hover,
+        &:active {
+          text-decoration: underline;
+        }
+      `
+    }
+
+    default:
+      return ''
   }
-  
-  ${fontWeight}
-  ${borderColor}
-  ${borderRadius}
-  ${buttonStyle}
-  ${fontSize}
-  ${letterSpacing}
-  ${lineHeight}
+}
+
+export const Button = styled(Box)`
+  &:hover {
+    cursor: pointer;
+  }
+
+  ${buttonStyles} ${typography};
 `
 
 Button.defaultProps = {

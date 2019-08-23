@@ -1,4 +1,4 @@
-import isNil from 'lodash/isNil'
+import { isNil } from './helpers'
 
 const getItem = key => {
   const item = localStorage.getItem(key)

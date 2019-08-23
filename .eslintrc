@@ -15,10 +15,12 @@
   },
   "extends": [
     "standard",
+    "prettier",
+    "prettier/react",
     "plugin:react/recommended",
     "plugin:jest/recommended"
   ],
-  "plugins": ["react", "jest"],
+  "plugins": ["react", "jest", "prettier"],
   "rules": {
     "react/no-unused-prop-types": 1,
     "space-before-function-paren": 0,
@@ -26,8 +28,6 @@
     "react/destructuring-assignment": [2, "always"],
     "react/default-props-match-prop-types": 1,
     "react/boolean-prop-naming": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
     "react/no-typos": 1,
     "react/require-default-props": 1,
     "react/sort-comp": 1,
@@ -50,7 +50,8 @@
         "prop": "parens-new-line"
       }
     ],
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "prettier/prettier": "error"
   },
   "globals": {
     "localStorage": true

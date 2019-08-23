@@ -49,12 +49,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        include: /node_modules/,
-        exclude: /src/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
           {

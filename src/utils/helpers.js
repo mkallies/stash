@@ -1,8 +1,11 @@
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-export const isEmail = email => {
+const isEmail = email => {
   return emailRe.test(email)
 }
 
-export const getTruthyProperties = obj =>
-  Object.keys(obj).filter(key => obj[key])
+const getTruthyProperties = obj => Object.keys(obj).filter(key => obj[key])
+
+const isNil = value => value == null
+
+export { isEmail, getTruthyProperties, isNil }

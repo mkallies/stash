@@ -1,18 +1,20 @@
 import axios from 'axios'
-import { BASE_URL } from '../common/constants'
+
+const BASE_URL =
+  'https://stash-backend.herokuapp.com' ||
+  process.env.BASE_URL ||
+  'http://localhost:4500'
 
 axios.defaults.baseURL = BASE_URL
 
-function fetcher({ config, data, params }) {
+async function fetcher(config) {
+  console.log({ config })
   return axios({
-    data,
-    method: config.method,
-    url: config.path,
-    params,
     withCredentials: true,
     headers: {
       'Access-Control-Allow-Origin': 'https://stash-backend.herokuapp.com',
     },
+    ...config,
   })
 }
 
